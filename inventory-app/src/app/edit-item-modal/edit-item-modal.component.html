@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Edit Item</h2>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="editedItem.name" name="name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Quantity" [(ngModel)]="editedItem.quantity" name="quantity" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Shelving level" [(ngModel)]="editedItem.shelvingLevel" name="shelvingLevel" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Shelving number" [(ngModel)]="editedItem.shelvingNumber" name="shelvingNumber" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="inside box" [(ngModel)]="editedItem.isInsideBox" name="isInsideBox" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Comment" [(ngModel)]="editedItem.comment" name="comment" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="custom-form">
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="newItem.name" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" [(ngModel)]="newItem.quantity" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Shelving Level</mat-label>
+        <input matInput type="number" [(ngModel)]="newItem.shelvingLevel" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Shelving Number</mat-label>
+        <input matInput type="number" [(ngModel)]="newItem.shelvingNumber" />
+      </mat-form-field>
+    </div>
+
+    <!--
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Stored in:</mat-label>
+      <mat-radio-group [(ngModel)]="newItem.isInsideBox">
+        <mat-radio-button value="true">Box</mat-radio-button>
+        <mat-radio-button value="false">Bag</mat-radio-button>
+      </mat-radio-group>
+      </mat-form-field>
+
+    </div>
+-->
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Comment</mat-label>
+        <textarea matInput [(ngModel)]="newItem.comment"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="button-container">
+      <button
+        mat-button
+        color="primary"
+        class="custom-button"
+        (click)="addItem()"
+      >
+        Save Item
+      </button>
+    </div>
+  </div>
+</div>
