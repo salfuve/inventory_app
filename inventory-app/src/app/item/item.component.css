@@ -1,48 +1,81 @@
+.sticky-header {
+  position: sticky;
+  z-index: 1000;
+  height: 60px; /* Ajusta la altura según sea necesario */
+  top: 0;
+  background-color: rgb(29, 110, 128);
+}
+.sticky-header h1 {
+  color: whitesmoke;
+  margin: 0; /* Elimina el margen superior e inferior del título */
+  padding: 10px; /* Ajusta el relleno del título según sea necesario */
+  text-align: center; /* Centra el texto horizontalmente */
+}
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  flex-direction: column;
 }
 
 .items-table {
   padding: 20px;
-  background-color: #2196f3; /* Azul */
+  background-color: rgb(29, 110, 128);
   color: white;
   border-radius: 5px;
-  overflow-x: auto; /* Habilita el desplazamiento horizontal si el contenido es más ancho que el contenedor */
-  text-align: center; /* Centra el contenido de las celdas */
-
+  overflow-x: auto;
+  text-align: center;
+}
+.search-and-add-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-icon {
+  color: white;
 }
 
-.mat-header-cell, .mat-cell {
+.search-field {
+  flex: 0.5;
+  margin-right: 8px;
+}
+.white-header {
+  justify-content: center;
+  align-items: center;
+  color: rgb(29, 110, 128);
+  background-color: whitesmoke;
+  text-align: center;
+}
+.mat-header-cell,
+.mat-cell {
   padding: 10px;
 }
 
-.mat-header-row, .mat-row {
-  background-color: #1565c0; /* Azul más oscuro */
+.header-cell {
+  background-color: whitesmoke;
 }
-
-.mat-header-cell, .mat-cell, .mat-row {
-  border-bottom: 1px solid #64b5f6; /* Línea de separación */
-}
-
-/* Estilos para el botón */
-.custom-button {
+.mat-header-row,
+.mat-row {
+  color: rgb(29, 110, 128);
   background-color: white;
-  color: #2196f3; /* Azul */
 }
 
-/* Estilos para el icono del botón */
-.mat-icon-button {
-  color: white;
+.mat-header-cell,
+.mat-cell,
+.mat-row {
+  border-bottom: 1px solid #64b5f6;
 }
 
-/* Estilos para la celda de acciones */
-.action-cell {
-  text-align: center;
+.add-item-button {
+  background-color: white;
+  color: rgb(29, 110, 128);
 }
 
-/* Estilos para el contenedor de la tabla */
-.custom-table {
-  text-align: center;
+.edit-delete-icon {
+  color: rgb(29, 110, 128);
+}
+.data-cell {
+  background-color: white;
+  color: rgb(29, 110, 128);
 }

@@ -6,21 +6,35 @@ import { ItemService } from '../item/item.service';
 @Component({
   selector: 'app-edit-item-modal',
   templateUrl: './edit-item-modal.component.html',
-  styleUrls: ['./edit-item-modal.component.css']
+  styleUrls: ['./edit-item-modal.component.css'],
 })
 export class EditItemModalComponent {
   editedItem: Item;
 
-  constructor(private itemService: ItemService,
+  constructor(
+    private itemService: ItemService,
     public dialogRef: MatDialogRef<EditItemModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Item
+    @Inject(MAT_DIALOG_DATA) public data: { item: Item }
   ) {
-    this.editedItem = { ...data }; // Copia profunda del objeto para evitar modificar el objeto original directamente
+    this.editedItem = { ...data.item };
   }
 
   onSave(): void {
-    this.itemService.updateItem
-    this.dialogRef.close(this.editedItem);
+    if (this.editedItem.id) {
+      this.itemService
+        .updateItem(this.editedItem.id, this.editedItem)
+        .subscribe(
+          () => {
+            this.dialogRef.close(this.editedItem);
+          },
+          (error) => {
+            console.error(
+              'Error' + error + 'trying to edit item with id:',
+              this.editedItem.id
+            );
+          }
+        );
+    }
   }
 
   onClose(): void {

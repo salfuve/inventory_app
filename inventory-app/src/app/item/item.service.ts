@@ -14,10 +14,6 @@ export class ItemService {
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(`${this.baseUrl}/items`);
   }
-
-  searchItemsByName(name: string): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.baseUrl}/items/search?name=${name}`);
-  }
   
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(`${this.baseUrl}/items`, item);
@@ -28,15 +24,9 @@ export class ItemService {
     return this.http.delete<void>(url);
   }
 
-  deleteAllItems(): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/items`);
-  }
-
   updateItem(id: number, item: Item): Observable<Item> {
+    console.log('item', item)
     return this.http.put<Item>(`${this.baseUrl}/items/${id}`, item);
   }
 
-  getItemById(id: number): Observable<Item> {
-    return this.http.get<Item>(`${this.baseUrl}/items/${id}`);
-  }
 }

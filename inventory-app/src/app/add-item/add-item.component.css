@@ -1,14 +1,18 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
   
   .custom-form {
     width: 400px;
     padding: 20px;
-    background-color: #2196f3; 
+    background-color:rgb(29, 110, 128);
     color: white;
     border-radius: 5px;
   }
@@ -26,10 +30,13 @@
   }
   .custom-button {
     background-color: white;
-    color: #2196f3; /* Azul */
+    color: rgb(29, 110, 128); /* Azul */
     margin-left: auto;
+    margin: 0 10px;
   }
 
   .button-container {
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 20px; /* Agrega un espacio en la parte superior de los botones */
   }

@@ -4,7 +4,7 @@ export class Item {
     quantity: number;
     shelvingLevel: number;
     shelvingNumber: number;
-    isInsideBox: boolean;
+    location: string;
     comment: string;
   
     constructor(
@@ -12,14 +12,14 @@ export class Item {
       quantity: number,
       shelvingLevel: number,
       shelvingNumber: number,
-      isInsideBox: boolean,
+      location: string,
       comment: string
     ) {
       this.name = name;
       this.quantity = quantity;
       this.shelvingLevel = shelvingLevel;
       this.shelvingNumber = shelvingNumber;
-      this.isInsideBox = isInsideBox;
+      this.location = location;
       this.comment = comment;
     }
   }

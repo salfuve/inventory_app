@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemService } from './item.service';
 import { Item } from './item.model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditItemModalComponent } from '../edit-item-modal/edit-item-modal.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-item',
@@ -20,31 +21,56 @@ export class ItemComponent implements OnInit {
     'isInsideBox',
     'comment',
     'actions',
-  ]; // Specify columns to display in the table
+  ]; 
+  dataSource = new MatTableDataSource<Item>();
+  constructor(
+    private router: Router,
+    private itemService: ItemService,
+    public dialog: MatDialog
+  ) {}
 
-  constructor(private router: Router, private itemService: ItemService, public dialog: MatDialog) {}
   ngOnInit(): void {
-    this.itemService.getItems().subscribe((items) => {
+      this.itemService.getItems().subscribe((items) => {
+        this.router.navigate(['/items']);
+
       this.items = items;
+      this.dataSource.data = this.items;
     });
   }
+
 
   updateItem(item: Item): void {
     const dialogRef = this.dialog.open(EditItemModalComponent, {
       width: '500px',
-      data: { item: item }
-    })}
+      data: { item: item },
+    });
+    dialogRef.afterClosed().subscribe((editedItem: Item) => {
+
+      if (editedItem) {
+        const index = this.items.findIndex(i => i.id === editedItem.id); 
+
+        if (index !== -1) {
+          this.items[index] = editedItem; 
+          this.dataSource.data = [...this.items]; 
+        }
+      }
+    });
+  }
+
+  handleSearch(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   deleteItem(id: number): void {
     this.itemService.deleteItem(id).subscribe(
       () => {
         this.items = this.items.filter((item) => item.id !== id);
+        this.dataSource.data = [...this.items]; 
 
-        console.log('Ítem eliminado exitosamente');
-        // Puedes realizar otras acciones después de eliminar el ítem si es necesario
       },
       (error) => {
-        console.error('Error al eliminar el ítem:', error);
+        console.error('Error' + (error) +'trying to remove item with id:', id);
       }
     );
   }

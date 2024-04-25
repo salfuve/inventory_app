@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppComponent,
     AddItemComponent,
     EditItemModalComponent,
+    HomeComponent,
   ],
   imports: [
     HttpClientModule,
